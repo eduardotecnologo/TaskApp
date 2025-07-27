@@ -1,0 +1,16 @@
+//---------------------------------------------------------------------------
+
+#include <vcl.h>
+#pragma hdrstop
+
+#include "FormCadastroUsuario.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+#pragma resource "*.dfm"
+TFrmCadastroUsuario *FrmCadastroUsuario;
+//---------------------------------------------------------------------------
+__fastcall TFrmCadastroUsuario::TFrmCadastroUsuario(TComponent* Owner)
+	: TForm(Owner)
+{
+}
+//---------------------------------------------------------------------------
