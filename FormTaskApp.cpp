@@ -18,7 +18,10 @@ __fastcall TForm1::TForm1(TComponent* Owner)
 void __fastcall TForm1::FormShow(TObject *Sender)
 {
 	if (FrmLogin->ShowModal() != mrOk) {
-        Application->Terminate();
+		Application->Terminate(); // Fecha o app se o login for cancelado
+    } else {
+        // Login foi bem-sucedido, pode continuar
+        Caption = "TaskApp - Logado como: " + FrmLogin->EditUsuario->Text;
     }
 }
 //---------------------------------------------------------------------------

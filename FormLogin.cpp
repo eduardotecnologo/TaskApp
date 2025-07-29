@@ -4,6 +4,10 @@
 #pragma hdrstop
 
 #include "FormLogin.h"
+#include "DmConexao.h"
+extern TDataModule1 *DataModule1;
+
+#include "FormCadastroUsuario.h"
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
 #pragma resource "*.dfm"
@@ -24,7 +28,34 @@ void __fastcall TFrmLogin::BtnLoginClick(TObject *Sender)
     else
     {
         LblMensagem->Caption = "Tentativa de Login...";
-    }
+	}
+
+	// Criar a query para verificar login
+	TFDQuery *query = new TFDQuery(NULL);
+	try
+	{
+		query->Connection = DataModule1->FDConnection;
+		query->SQL->Text = "SELECT id, usuario FROM usuarios WHERE usuario = :usuario AND senha = :senha";
+		query->ParamByName("usuario")->AsString = EditUsuario->Text.Trim();
+		query->ParamByName("senha")->AsString = EditSenha->Text.Trim();
+		query->Open();
+
+		if(!query->Eof)
+		{
+          LblMensagem->Caption = "Login realizado com Sucesso!";
+          ModalResult = mrOk; // Fecha o modal com sucesso
+		}
+		else
+		{
+		  LblMensagem->Caption = "Login inválido!";
+		  EditSenha->Text = "";
+          EditSenha->SetFocus();
+		}
+	}
+	__finally
+	{
+        query->Free();
+	}
 }
 //---------------------------------------------------------------------------
 void __fastcall TFrmLogin::BtnCadastrarUsuarioClick(TObject *Sender)
