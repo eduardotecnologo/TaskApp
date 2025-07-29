@@ -21,7 +21,11 @@ void __fastcall TForm1::FormShow(TObject *Sender)
 		Application->Terminate(); // Fecha o app se o login for cancelado
     } else {
         // Login foi bem-sucedido, pode continuar
-        Caption = "TaskApp - Logado como: " + FrmLogin->EditUsuario->Text;
+        // Verifica se o EditUsuario tem conteúdo (login normal) ou se veio do cadastro
+        if (FrmLogin->EditUsuario->Text.Trim() != "") {
+            Caption = "TaskApp - Logado como: " + FrmLogin->EditUsuario->Text;
+        }
+        // Se não tem conteúdo, o título já foi definido no cadastro
     }
 }
 //---------------------------------------------------------------------------

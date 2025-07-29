@@ -11,6 +11,7 @@
 class TForm1 : public TForm
 {
 __published:	// IDE-managed Components
+	TLabel *Label1;
     void __fastcall FormShow(TObject *Sender);
 private:	// User declarations
 public:		// User declarations

@@ -14,4 +14,17 @@ object Form1: TForm1
   WindowState = wsMaximized
   OnShow = FormShow
   TextHeight = 15
+  object Label1: TLabel
+    Left = 224
+    Top = 8
+    Width = 133
+    Height = 25
+    Caption = 'Starred boards'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -19
+    Font.Name = 'Segoe UI'
+    Font.Style = [fsBold]
+    ParentFont = False
+  end
 end

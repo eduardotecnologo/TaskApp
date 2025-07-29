@@ -5,6 +5,8 @@
 
 #include "FormCadastroUsuario.h"
 #include "DmConexao.h"
+#include "FormTaskApp.h"
+#include "FormLogin.h"
 extern TDataModule1 *DataModule1;
 //---------------------------------------------------------------------------
 #pragma package(smart_init)
@@ -82,7 +84,18 @@ void __fastcall TFrmCadastroUsuario::BtnSalvarCadastroClick(TObject *Sender)
 		 queryInsert->ExecSQL();
 		 
 		 ShowMessage("Usuário cadastrado com sucesso!");
-		 ModalResult = mrOk; // Fecha o formulário
+		 
+		 // Fechar ambos os formulários e ir direto para a tela principal
+		 ModalResult = mrOk;
+		 if (FrmLogin) {
+			 FrmLogin->ModalResult = mrOk;
+		 }
+		 
+		 // Atualizar o título da tela principal
+		 if (Form1) {
+			 Form1->Caption = "TaskApp - Logado como: " + EdtNomeUsuario->Text.Trim();
+			 Form1->Refresh(); // Força a atualização da interface
+		 }
 	 }
 	 catch (Exception &e) {
 		ShowMessage("Erro ao cadastrar usuário: " + e.Message);
