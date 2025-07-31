@@ -16,7 +16,7 @@ object FrmLogin: TFrmLogin
   TextHeight = 40
   object LabelUsuario: TLabel
     Left = 168
-    Top = 82
+    Top = 59
     Width = 42
     Height = 15
     Caption = 'Usu'#225'rio'
@@ -29,7 +29,7 @@ object FrmLogin: TFrmLogin
   end
   object LabelSenha: TLabel
     Left = 168
-    Top = 130
+    Top = 107
     Width = 34
     Height = 15
     Caption = 'Senha'
@@ -55,7 +55,7 @@ object FrmLogin: TFrmLogin
   end
   object Label1: TLabel
     Left = 168
-    Top = 26
+    Top = 3
     Width = 229
     Height = 30
     Caption = 'Task App for Developer'
@@ -68,7 +68,7 @@ object FrmLogin: TFrmLogin
   end
   object EditUsuario: TEdit
     Left = 168
-    Top = 102
+    Top = 79
     Width = 257
     Height = 29
     Font.Charset = DEFAULT_CHARSET
@@ -81,7 +81,7 @@ object FrmLogin: TFrmLogin
   end
   object EditSenha: TEdit
     Left = 168
-    Top = 150
+    Top = 127
     Width = 257
     Height = 29
     Font.Charset = DEFAULT_CHARSET
@@ -94,7 +94,7 @@ object FrmLogin: TFrmLogin
   end
   object Button1: TButton
     Left = 168
-    Top = 210
+    Top = 169
     Width = 257
     Height = 25
     Caption = 'Entrar'
@@ -105,7 +105,6 @@ object FrmLogin: TFrmLogin
     Font.Style = []
     ParentFont = False
     TabOrder = 2
-    OnClick = BtnLoginClick
   end
   object BtnCadastrarUsuario: TButton
     Left = 168
@@ -121,5 +120,20 @@ object FrmLogin: TFrmLogin
     ParentFont = False
     TabOrder = 3
     OnClick = BtnCadastrarUsuarioClick
+  end
+  object BtnRecuperarSenha: TButton
+    Left = 168
+    Top = 200
+    Width = 257
+    Height = 25
+    Caption = 'Esqueci minha senha'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -16
+    Font.Name = 'Segoe UI'
+    Font.Style = []
+    ParentFont = False
+    TabOrder = 4
+    OnClick = BtnRecuperarSenhaClick
   end
 end

@@ -11,17 +11,17 @@ object DataModule1: TDataModule1
       'DriverID=MySQL')
     Connected = True
     LoginPrompt = False
-    Left = 48
-    Top = 40
+    Left = 56
+    Top = 8
   end
   object FDQuery: TFDQuery
     Connection = FDConnection
-    Left = 48
-    Top = 120
+    Left = 56
+    Top = 80
   end
   object FDPhysMySQLDriverLink1: TFDPhysMySQLDriverLink
     VendorLib = 'C:\Users\EduDevWin\Downloads\libmysql.dll\LIBMYSQL.DLL'
-    Left = 48
-    Top = 192
+    Left = 56
+    Top = 152
   end
 end
