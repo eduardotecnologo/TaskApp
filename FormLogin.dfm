@@ -90,9 +90,10 @@ object FrmLogin: TFrmLogin
     Font.Name = 'Segoe UI'
     Font.Style = []
     ParentFont = False
+    PasswordChar = '*'
     TabOrder = 1
   end
-  object Button1: TButton
+  object btnEntrar: TButton
     Left = 168
     Top = 169
     Width = 257

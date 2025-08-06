@@ -5,9 +5,10 @@
 #include <tchar.h>
 //---------------------------------------------------------------------------
 USEFORM("FormTaskApp.cpp", Form1);
-USEFORM("FormLogin.cpp", FrmLogin);
-USEFORM("FormCadastroUsuario.cpp", FrmCadastroUsuario);
 USEFORM("DmConexao.cpp", DataModule1); /* TDataModule: File Type */
+USEFORM("FormCadastroUsuario.cpp", FrmCadastroUsuario);
+USEFORM("FormLogin.cpp", FrmLogin);
+USEFORM("FormRecuperarSenha.cpp", FrmRecuperarSenha);
 //---------------------------------------------------------------------------
 int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
 {
@@ -19,6 +20,7 @@ int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
 		Application->CreateForm(__classid(TFrmLogin), &FrmLogin);
 		Application->CreateForm(__classid(TFrmCadastroUsuario), &FrmCadastroUsuario);
 		Application->CreateForm(__classid(TDataModule1), &DataModule1);
+		Application->CreateForm(__classid(TFrmRecuperarSenha), &FrmRecuperarSenha);
 		Application->Run();
 	}
 	catch (Exception &exception)

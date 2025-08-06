@@ -5,6 +5,7 @@
 
 #include "FormLogin.h"
 #include "DmConexao.h"
+#include "FormTask.h"
 extern TDataModule1 *DataModule1;
 
 #include "FormCadastroUsuario.h"
@@ -27,7 +28,7 @@ void __fastcall TFrmLogin::BtnCadastrarUsuarioClick(TObject *Sender)
 	// FrmCadastroUsuario->ShowModal();
 	if(!FrmCadastroUsuario)
 	   FrmCadastroUsuario = new TFrmCadastroUsuario(this);
-       FrmCadastroUsuario->ShowModal();
+	   FrmCadastroUsuario->ShowModal();
 }
 //---------------------------------------------------------------------------
 void __fastcall TFrmLogin::FormShow(TObject *Sender)
@@ -35,9 +36,6 @@ void __fastcall TFrmLogin::FormShow(TObject *Sender)
 	Position = poScreenCenter;
 }
 //---------------------------------------------------------------------------
-
-
-// ... existing code ...
 void __fastcall TFrmLogin::BtnRecuperarSenhaClick(TObject *Sender)
 {
 	// Verificar se o usuário foi informado
@@ -113,7 +111,6 @@ void __fastcall TFrmLogin::BtnRecuperarSenhaClick(TObject *Sender)
 		query->Free();
 	}
 }
-// ... existing code ...
 
 //---------------------------------------------------------------------------
 
@@ -135,4 +132,7 @@ String TFrmLogin::GerarSenhaTemporaria()
 
     return senha;
 }
+
+
+//---------------------------------------------------------------------------
 

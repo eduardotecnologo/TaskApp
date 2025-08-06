@@ -16,7 +16,7 @@ __published:	// IDE-managed Components
 	TEdit *EditUsuario;
 	TLabel *LabelSenha;
 	TEdit *EditSenha;
-	TButton *Button1;
+	TButton *btnEntrar;
 	TLabel *LblMensagem;
 	TLabel *Label1;
 	TButton *BtnCadastrarUsuario;
