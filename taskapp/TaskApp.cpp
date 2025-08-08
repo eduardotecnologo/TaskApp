@@ -10,7 +10,7 @@ USEFORM("FormCadastroUsuario.cpp", FrmCadastroUsuario);
 USEFORM("FormLogin.cpp", FrmLogin);
 USEFORM("FormRecuperarSenha.cpp", FrmRecuperarSenha);
 USEFORM("FormTaskMain.cpp", FrmTaskMain);
-USEFORM("FormBoasVindas.cpp", TFrmBoasVindas);
+USEFORM("FormBoasVindas.cpp", FrmBoasVindas);
 //---------------------------------------------------------------------------
 int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
 {
@@ -20,7 +20,7 @@ int WINAPI _tWinMain(HINSTANCE, HINSTANCE, LPTSTR, int)
 		Application->MainFormOnTaskBar = true;
 		Application->CreateForm(__classid(TFrmLogin), &FrmLogin);
 		Application->CreateForm(__classid(TDataModule1), &DataModule1);
-		Application->CreateForm(__classid(TTFrmBoasVindas), &TFrmBoasVindas);
+		Application->CreateForm(__classid(TFrmBoasVindas), &FrmBoasVindas);
 		Application->Run();
 	}
 	catch (Exception &exception)
