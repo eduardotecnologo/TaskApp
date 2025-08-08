@@ -106,6 +106,7 @@ object FrmLogin: TFrmLogin
     Font.Style = []
     ParentFont = False
     TabOrder = 2
+    OnClick = btnEntrarClick
   end
   object BtnCadastrarUsuario: TButton
     Left = 168

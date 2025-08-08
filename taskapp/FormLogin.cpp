@@ -5,7 +5,11 @@
 
 #include "FormLogin.h"
 #include "DmConexao.h"
+#include "FormTaskMain.h"
+#include "FormBoasVindas.h"
+extern TFrmBoasVindas *FrmBoasVindas;
 extern TDataModule1 *DataModule1;
+extern TFrmTaskMain *FrmTaskMain;
 
 #include "FormCadastroUsuario.h"
 #include "FormRecuperarSenha.h"
@@ -133,5 +137,47 @@ String TFrmLogin::GerarSenhaTemporaria()
 }
 
 
+//---------------------------------------------------------------------------
+
+void __fastcall TFrmLogin::btnEntrarClick(TObject *Sender)
+{
+	String usuario = EditUsuario->Text.Trim();
+	String senha = EditSenha->Text.Trim();
+
+	if (usuario.IsEmpty() || senha.IsEmpty()) {
+		LblMensagem->Caption = "Preencha todos os campos!";
+		return;
+	}
+
+	TFDQuery *query = new TFDQuery(NULL);
+	try {
+		query->Connection = DataModule1->FDConnection;
+		query->SQL->Text = "SELECT * FROM usuarios WHERE usuario = :usuario AND senha = :senha";
+		query->ParamByName("usuario")->AsString = usuario;
+		query->ParamByName("senha")->AsString = senha;
+		query->Open();
+
+		if (!query->Eof) {
+			String nomeUsuario = query->FieldByName("usuario")->AsString;
+
+			if(!FrmBoasVindas)
+			   FrmBoasVindas = new TFrmBoasVindas(this);
+
+			// Login válido
+            FrmBoasVindas->NomeUsuario = nomeUsuario;
+			FrmBoasVindas->Show();
+//			FrmTaskMain = new TFrmTaskMain(this);
+//			FrmTaskMain->Show();
+			this->Hide(); // Oculta o login, mas mantém a aplicação rodando
+		}
+		else
+		{
+			LblMensagem->Caption = "Usuário ou senha inválidos!";
+		}
+	}
+	__finally {
+		query->Free();
+	}
+}
 //---------------------------------------------------------------------------
 

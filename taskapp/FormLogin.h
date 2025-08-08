@@ -24,6 +24,7 @@ __published:	// IDE-managed Components
 	void __fastcall FormShow(TObject *Sender);
 	void __fastcall BtnCadastrarUsuarioClick(TObject *Sender);
 	void __fastcall BtnRecuperarSenhaClick(TObject *Sender);
+	void __fastcall btnEntrarClick(TObject *Sender);
 private:	// User declarations
 	String GerarSenhaTemporaria();
 public:		// User declarations
