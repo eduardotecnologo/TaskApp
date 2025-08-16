@@ -7,7 +7,7 @@ Após análise das opções disponíveis, **Go** é a escolha recomendada para o
 ### ✅ **Vantagens do Go para este projeto**
 
 1. **Performance Excepcional**
-   - Ideal para APIs com muitos usuários simultâneos
+   - Ideal para APIs com muitos usuários simultâneo
    - Concorrência nativa com goroutines
    - Compilação rápida e eficiente
 
