@@ -7,6 +7,7 @@
 #include "DmConexao.h"
 #include "FormTaskMain.h"
 #include "FormBoasVindas.h"
+#include <System.JSON.hpp>
 extern TFrmBoasVindas *FrmBoasVindas;
 extern TDataModule1 *DataModule1;
 extern TFrmTaskMain *FrmTaskMain;
@@ -147,6 +148,52 @@ void __fastcall TFrmLogin::btnEntrarClick(TObject *Sender)
 	if (usuario.IsEmpty() || senha.IsEmpty()) {
 		LblMensagem->Caption = "Preencha todos os campos!";
 		return;
+	}
+
+	try
+	{   // Configurar a requisição REST
+		RESTClient1->BaseURL = "http://localhost:8080";
+		RESTRequest1->Resource = "api/auth/login";
+		RESTRequest1->Method = rmPOST;
+
+		// Criar JSON do Login
+		TJSONObject *jsonLogin = new TJSONObject();
+		jsonLogin->AddPair("usuario", usuario);
+		jsonLogin->AddPair("senha", senha);
+
+		// Adicionar body
+		RESTRequest1->AddBody(jsonLogin->ToString(), ctAPPLICATION_JSON);
+
+		// Executar requisição
+		RESTRequest1->Execute();
+
+		// Verificar a resposta
+		if(RESTResponse1->StatusCode == 200)
+		{
+			TJSONObject *responseJson = (TJSONObject*)
+			TJSONObject::ParseJSONValue(RESTResponse1 -> Content);
+
+			String token = responseJson->GetValue("token")->Value();
+			String nomeUsuario = responseJson->GetValue("usuario")->Value();
+
+			// Armazenar token para próximas requisições
+		if(!FrmBoasVindas)
+			   FrmBoasVindas = new TFrmBoasVindas(this);
+			// Login inválido
+		FrmBoasVindas->NomeUsuario = nomeUsuario;
+		FrmBoasVindas->Show();
+		this->Hide();
+			LblMensagem->Caption = "Login realizado com sucesso!!!";
+		}
+		else
+		{
+			LblMensagem->Caption = "Erro no login: " + RESTResponse1->Content;
+		}
+        jsonLogin->Free();
+	}
+	catch(Exception &e)
+	{
+       LblMensagem->Caption = "Erro: " + e.Message;
 	}
 
 	TFDQuery *query = new TFDQuery(NULL);

@@ -6,15 +6,20 @@ import (
 )
 
 type User struct {
-	ID                   uint      `json:"id" gorm:"primaryKey"`
-	Usuario           string       `gorm:"type:varchar(255);uniqueIndex"`
-    Email             string       `gorm:"type:varchar(255);uniqueIndex"`
-    Senha             string       `gorm:"type:varchar(255);not null"`
-    SenhaTemporaria   bool         `gorm:"default:false"`
+	ID                   uint       `json:"id" gorm:"primaryKey"`
+	Usuario              string     `json:"usuario" gorm:"type:varchar(255);uniqueIndex"`
+    Email                string     `json:"email" gorm:"type:varchar(255);uniqueIndex"`
+    Senha                string     `json:"-" gorm:"type:varchar(255);not null"`
+    SenhaTemporaria      bool       `json:"senha_temporaria" gorm:"default:false"`
 	DataAlteracaoSenha   *time.Time `json:"data_alteracao_senha"`
-	CreatedAt            time.Time `json:"created_at"`
-	UpdatedAt            time.Time `json:"updated_at"`
+	CreatedAt            time.Time  `json:"created_at"`
+	UpdatedAt            time.Time  `json:"updated_at"`
 	DeletedAt            gorm.DeletedAt `json:"-" gorm:"index"`
+}
+
+// TableName especifica o nome da tabela no banco de dados
+func (User) TableName() string {
+	return "usuarios"
 }
 
 // LoginRequest representa os dados de login
