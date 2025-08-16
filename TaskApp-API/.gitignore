@@ -1,0 +1,44 @@
+# Binários
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+taskapp-api
+server
+
+# Arquivos de teste
+*.test
+
+# Arquivos de cobertura
+*.out
+
+# Dependências
+vendor/
+
+# Arquivos de configuração local
+configs/local.yaml
+configs/production.yaml
+.env
+
+# Logs
+*.log
+logs/
+
+# Arquivos temporários
+*.tmp
+*.temp
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Go workspace
+go.work
+go.work.sum
