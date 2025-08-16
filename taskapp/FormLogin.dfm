@@ -1,10 +1,10 @@
 object FrmLogin: TFrmLogin
   Left = 0
   Top = 0
-  Align = alClient
+  Align = alCustom
   Caption = 'Login'
   ClientHeight = 340
-  ClientWidth = 612
+  ClientWidth = 613
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -137,5 +137,23 @@ object FrmLogin: TFrmLogin
     ParentFont = False
     TabOrder = 4
     OnClick = BtnRecuperarSenhaClick
+  end
+  object RESTClient1: TRESTClient
+    Params = <>
+    SynchronizedEvents = False
+    Left = 552
+    Top = 8
+  end
+  object RESTRequest1: TRESTRequest
+    Client = RESTClient1
+    Params = <>
+    Response = RESTResponse1
+    SynchronizedEvents = False
+    Left = 552
+    Top = 72
+  end
+  object RESTResponse1: TRESTResponse
+    Left = 552
+    Top = 128
   end
 end

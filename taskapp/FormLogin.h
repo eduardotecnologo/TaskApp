@@ -8,6 +8,10 @@
 #include <Vcl.StdCtrls.hpp>
 #include <Vcl.Forms.hpp>
 #include "FormRecuperarSenha.h"
+#include <Data.Bind.Components.hpp>
+#include <Data.Bind.ObjectScope.hpp>
+#include <REST.Client.hpp>
+#include <REST.Types.hpp>
 //---------------------------------------------------------------------------
 class TFrmLogin : public TForm
 {
@@ -21,6 +25,9 @@ __published:	// IDE-managed Components
 	TLabel *Label1;
 	TButton *BtnCadastrarUsuario;
 	TButton *BtnRecuperarSenha;
+	TRESTClient *RESTClient1;
+	TRESTRequest *RESTRequest1;
+	TRESTResponse *RESTResponse1;
 	void __fastcall FormShow(TObject *Sender);
 	void __fastcall BtnCadastrarUsuarioClick(TObject *Sender);
 	void __fastcall BtnRecuperarSenhaClick(TObject *Sender);
